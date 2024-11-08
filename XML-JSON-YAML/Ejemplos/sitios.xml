@@ -1,0 +1,36 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<sitios>
+    <sitio>
+            <nombre>
+            Wikipedia
+        </nombre>
+        <descripcion>
+            La enciclopedia libre.
+        </descripcion>
+        <link>
+            http://en.wikipedia.org/
+        </link>
+    </sitio>
+    <sitio>
+        <nombre>
+            W3C
+        </nombre>
+        <descripcion>
+            World Wide Web Consortium.
+        </descripcion>
+        <link>
+            http://www.w3.org/
+        </link>
+    </sitio>
+    <sitio>
+        <nombre>
+            OEA
+        </nombre>
+        <descripcion>
+            Observatorio Europeo Austral
+        </descripcion>
+        <link>
+            https://www.eso.org/public/chile/?lang
+        </link>
+    </sitio>
+</sitios>
