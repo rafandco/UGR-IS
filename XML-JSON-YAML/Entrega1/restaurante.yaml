@@ -1,0 +1,16 @@
+nombre: "Almoradux"
+tipoComida: "Mediterranea Española"
+direccion: "Carretera Hinojos - El Rocío, Km. 2, 21740 Hinojos, Huelva"
+horario:
+  - almuerzo: "13:00 - 16:30"
+  - cena: "21:00 - 23:59"
+menu:
+  - plato1:
+      - nombre: "Ventresca de atún rojo"
+      - precio: 25
+  - plato2:
+      - nombre: "Merluza al vino blanco"
+      - precio: 15
+  - plato3:
+      - nombre: "Torrija con helado"
+      - precio: 6

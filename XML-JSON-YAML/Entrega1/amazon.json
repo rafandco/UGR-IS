@@ -1,0 +1,24 @@
+{
+  "carro": [
+    {
+      "titulo": "TYEERS Cajas de almacenaje Plegables con Tapa, Cajas Or...",
+      "precio": 26.99,
+      "envioGratis": true,
+      "imagen": "https://www.example.com/tyeers-cajas-de-almacenamiento-plegables-con-tapa-cajas-or-1.jpg",
+      "stock": true,
+      "tamaño": "Juego de 3",
+      "color": "beige",
+      "cantidad": 2
+    },
+    {
+      "titulo": "Cabin MAX 45x36x20 Easyjet Trolley Maleta de Ma...",
+      "precio": 54.95,
+      "envioGratis": true,
+      "imagen": "https://www.example.com/cabin-max-45x36x20-easyjet-trolley-maleta-de-maleta-1.jpg",
+      "stock": true,
+      "tamaño": "45x36x20",
+      "color": "Oro rosa",
+      "cantidad": 1
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "Ceuta",
+    "pais": "España",
+    "continente": "Europa"
+  },
+  {
+    "nombre": "Casablanca",
+    "pais": "Marruecos",
+    "continente": "África"
+  },
+  {
+    "nombre": "Nueva Dehli",
+    "pais": "India",
+    "continente": "Asia"
+  }
+]
