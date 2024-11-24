@@ -7,6 +7,11 @@ tareas = [
     {'id': 3, 'titulo': 'Hacer la compra', 'descripcion': 'Comprar frutas, verduras y productos de limpieza'}
 ]
 
+def crear_nueva_tarea(data):
+    tarea = {'id': len(tareas) + 1, 'titulo': data['titulo'], 'descripcion': data['descripcion']}
+    tareas.append(tarea)
+    return tarea
+
 def obtener_tarea_por_id(tarea_id):
     for tarea in tareas:
         if tarea['id'] == int(tarea_id):
@@ -34,6 +39,11 @@ def eliminar_tarea_por_id(tarea_id):
 def bienvenida():
     return jsonify({'mensaje': 'Bienvenido a la API de tareas'}), 200
 
+@app.route('/tareas', methods=['GET'])
+def obtener_todas_las_tareas():
+    # Devuelve todas las tareas en formato JSON
+    return jsonify(tareas)
+
 # Rutas para las acciones CRUD    
 @app.route('/tareas/<tarea_id>', methods=['GET'])
 def obtener_tarea(tarea_id):
@@ -52,12 +62,7 @@ def crear_tarea():
     # Aquí puedes acceder a los datos enviados por el cliente a través de request
     data = request.json # Suponiendo que los datos se envían en formato JSON
     # Procesa los datos y crea el nuevo recurso
-    nueva_tarea = {
-        'id': data['id'],
-        'titulo': data['titulo'],
-        'descripcion': data['descripcion']
-    }
-    tareas.append(nueva_tarea)
+    nueva_tarea = crear_nueva_tarea(data)
     # Devuelve una respuesta adecuada, por ejemplo, un código 201 (Created)
     return jsonify({'mensaje': 'Tarea creada correctamente',
                     "data": nueva_tarea}), 201
