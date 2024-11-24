@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 tareas = [
-    {'id': 1, 'nombre': 'Recoger habitación'},
-    {'id': 2, 'nombre': 'Formatear PC'},
-    {'id': 3, 'nombre': 'Hacer la compra'}
+    {'id': 1, 'titulo': 'Recoger habitación', 'descripcion': 'Ordenar la ropa y limpiar el suelo'},
+    {'id': 2, 'titulo': 'Formatear PC', 'descripcion': 'Realizar respaldo antes del formateo'},
+    {'id': 3, 'titulo': 'Hacer la compra', 'descripcion': 'Comprar frutas, verduras y productos de limpieza'}
 ]
 
 def obtener_tarea_por_id(tarea_id):
@@ -16,16 +16,23 @@ def obtener_tarea_por_id(tarea_id):
 def actualizar_tarea_por_id(tarea_id, data):
     for tarea in tareas:
         if tarea['id'] == int(tarea_id):
-            tarea['nombre'] = data['nombre']
+            # Actualiza los campos título y descripción de la tarea
+            tarea['titulo'] = data['titulo']
+            tarea['descripcion'] = data['descripcion']
             return True
     return False
 
 def eliminar_tarea_por_id(tarea_id):
     for tarea in tareas:
         if tarea['id'] == int(tarea_id):    
+            # Elimina la tarea del listado si se encuentra
             tareas.remove(tarea)
             return True
     return False
+
+@app.route('/', methods=['GET'])
+def bienvenida():
+    return jsonify({'mensaje': 'Bienvenido a la API de tareas'}), 200
 
 # Rutas para las acciones CRUD    
 @app.route('/tareas/<tarea_id>', methods=['GET'])
@@ -34,10 +41,10 @@ def obtener_tarea(tarea_id):
     # Recupera la tarea con el ID proporcionado
     tarea = obtener_tarea_por_id(tarea_id)
     if tarea is not None:
-    # Devuelve la tarea encontrado, por ejemplo, en formato JSON
-        return jsonify(tarea)
+        # Devuelve la tarea encontrada, por ejemplo, en formato JSON
+        return jsonify(tarea), 200
     else:
-    # Devuelve una respuesta de error si la tarea no se encuentra
+        # Devuelve una respuesta de error si la tarea no se encuentra
         return jsonify({'error': 'Recurso no encontrado'}), 404
 
 @app.route('/tareas', methods=['POST'])
@@ -45,10 +52,15 @@ def crear_tarea():
     # Aquí puedes acceder a los datos enviados por el cliente a través de request
     data = request.json # Suponiendo que los datos se envían en formato JSON
     # Procesa los datos y crea el nuevo recurso
-    tareas.append({'id': data['id'], 'nombre': data['nombre']})
+    nueva_tarea = {
+        'id': data['id'],
+        'titulo': data['titulo'],
+        'descripcion': data['descripcion']
+    }
+    tareas.append(nueva_tarea)
     # Devuelve una respuesta adecuada, por ejemplo, un código 201 (Created)
     return jsonify({'mensaje': 'Tarea creada correctamente',
-                    "data": data}), 201
+                    "data": nueva_tarea}), 201
 
 @app.route('/tareas/<tarea_id>', methods=['PUT'])
 def actualizar_tarea(tarea_id):
